@@ -9,8 +9,6 @@ PORT = 5555
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 client.connect((HOST, PORT))
 
-# ---------------- GUI ---------------- #
-
 root = tk.Tk()
 root.title("Chat Application")
 
@@ -30,8 +28,6 @@ def send_message():
 send_button = tk.Button(root, text="Send", command=send_message)
 send_button.pack(pady=5)
 
-# ---------------- MESSAGE HANDLING ---------------- #
-
 def receive_messages():
     while True:
         try:
@@ -47,8 +43,6 @@ def receive_messages():
         except:
             break
 
-# ---------------- LOAD CHAT HISTORY ---------------- #
-
 try:
     with open("chat_history.txt", "r", encoding="utf-8") as f:
         chat_area.config(state='normal')
@@ -56,8 +50,6 @@ try:
         chat_area.config(state='disabled')
 except FileNotFoundError:
     pass
-
-# ---------------- USERNAME ---------------- #
 
 username = simpledialog.askstring("Username", "Enter your username:", parent=root)
 
